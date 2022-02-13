@@ -1,4 +1,5 @@
 ## Main title weather-app
+Created by Cristian Perdomo and Miguel Ortega
 
 Here goes information about the project.
 
