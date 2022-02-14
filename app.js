@@ -10,6 +10,8 @@ require("./config")(app);
 
 app.locals.siteTitle = `Weather-app`;
 
+require("./config/session.config")(app)
+
 require("./routes")(app)
 
 require("./error-handling")(app);
