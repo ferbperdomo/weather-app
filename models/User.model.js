@@ -23,7 +23,8 @@ const userSchema = new Schema(
       type: String,
       enum: ['USER', 'ADMIN'],
       default: 'USER'
-    }
+    },
+    cities: [String]
   },
   {
     timestamps: true,
