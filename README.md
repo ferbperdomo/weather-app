@@ -1,7 +1,7 @@
-## Main title weather-app
+# Main title weather-app
 Created by Cristian Perdomo and Miguel Ortega
 
-Here goes information about the project.
+
 
 
 
@@ -20,11 +20,11 @@ here goes information about the api
 
 ## Endpoint table
 
-| HTTP Method 	| URI path      	| Description                                    	| JSON 	|
+| HTTP Method 	| URI path      	| Description                                    	| Protected 	|
 |-------------	|---------------	|------------------------------------------------	|---------	|
 | GET         	| `/`             	| Index page          	| |
-| GET         	| `/users` 	| xxxxxxx 	| |
-| GET         	| `/admin` 	| xxxxxxx	| |
-| POST         	| `/xxxxxxx` 	| xxxxxxx 	| |
-| GET         	| `/xxxxxxx` 	| xxxxxxx 	| |
-| GET         	| `/xxxxxxx` 	| xxxxxxx `Array` 	|  ✅|
+| GET         	| `/sign-up` 	| Register users 	| |
+| GET         	| `/login` 	| Log in	| |
+| GET         	| `/account` 	| Places added to favourites 	| X |
+| GET         	| `/account/myplaces` 	| Each place with further information 	| X |
+| POST         	| `/account/suggestions` 	| Form for feedback 	| X |
