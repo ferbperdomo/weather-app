@@ -10,3 +10,9 @@ a {
 h1 {
   color: 15px;
 }
+
+#myMap {
+  height: 450px;
+  width: 50%;
+  margin: 20px auto;
+}
