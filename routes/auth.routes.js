@@ -14,7 +14,7 @@ router.post("/sign-up", (req, res, next) => {
     bcryptjs
         .genSalt(saltRounds)
         .then(salt => bcryptjs.hash(userPwd, salt))
-        .then(hashedPassword => User.create({ username, email, passwordHash: hashedPassword }))
+        .then(hashedPassword => User.create({ username, email, password: hashedPassword }))
         .then(() => res.redirect("/"))
         .catch(error => next(error))
 })
@@ -22,7 +22,7 @@ router.post("/sign-up", (req, res, next) => {
 // Log-in form
 router.get("/login", (req, res, next) => res.render('auth/login-form'))
 
-router.post(("/login", (req, res, next) => {
+router.post("/login", (req, res, next) => {
 
     const { email, userPwd } = req.body
 
@@ -39,17 +39,17 @@ router.post(("/login", (req, res, next) => {
                 res.render('auth/login-form', { errorMessage: 'Email not found in database' })
                 return
 
-            } else if (bcryptjs.compareSync(userPwd, user.passwordHash) === false) {
+            } else if (bcryptjs.compareSync(userPwd, user.password) === false) {
                 res.render('auth/login-form', { errorMessage: 'Incorrect password' })
                 return
 
             } else {
                 req.session.currentUser = user
-                res.redirect('/account')
+                res.redirect('/')
             }
         })
         .catch(error => next(error))
-}))
+})
 
 // Logout
 router.post('/logout', (req, res) => {
