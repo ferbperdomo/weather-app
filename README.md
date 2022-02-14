@@ -28,4 +28,5 @@ here goes information about the api
 | GET         	| `/account` 	| Places added to favourites 	| X |
 | GET         	| `/account/myplaces` 	| Each place with further information 	| X |
 | POST         	| `/account/suggestions` 	| Form for feedback 	| X |
+| POST         	| `/account/messages` 	| Answers for feedback 	| X |
 
