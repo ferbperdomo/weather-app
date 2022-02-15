@@ -4,12 +4,16 @@ const form = document.querySelector(".top-banner form");
 const input = document.querySelector(".top-banner input");
 const msg = document.querySelector(".top-banner .msg");
 const list = document.querySelector(".card-section .cities");
+const forecastList = document.querySelector(".forecast-section .forecasts")
 
-const apiKey = "d0b31d0dac9ba0b6a85727ee3e3eb4e7";
+
+let apiKey = "d0b31d0dac9ba0b6a85727ee3e3eb4e7"
+
+let cityName
 
 form.addEventListener("submit", e => {
     e.preventDefault();
-    let inputVal = input.value;
+    let inputVal = input.value
 
     const listItems = list.querySelectorAll(".card-section .city");
     const listItemsArray = Array.from(listItems);
@@ -44,12 +48,13 @@ form.addEventListener("submit", e => {
     API
         .getInfo(input.value)
         .then(response => {
-            const { main, name, sys, weather } = response.data;
+            cityName = response.data.name
+            const { main, name, sys, weather } = response.data
             const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]
-                }.svg`;
+                }.svg`
 
-            const li = document.createElement("li");
-            li.classList.add("city");
+            const li = document.createElement("li")
+            li.classList.add("city")
             const markup = `
       <div class= "row card align-items-center justify-content-around" style="border-radius: 25px">
           <div class="col-3">
@@ -67,16 +72,57 @@ form.addEventListener("submit", e => {
             </figure>
           </div>
       </div>
-      `;
+      `
 
-            li.innerHTML = markup;
-            list.replaceChildren(li);
+            li.innerHTML = markup
+            list.replaceChildren(li)
+
+        })
+        .then(() => {
+
+            API
+                .getForecast(cityName)
+                // console.log("API FORECAST--------------------->", cityName)
+                .then(response => {
+                    const { main, weather, dt_txt, wind } = response.data.list
+
+                    const li = document.createElement("li")
+                    li.classList.add("forecast")
+                    const forecastText = `
+
+                    <div class= "row card align-items-center justify-content-around" style="border-radius: 25px">
+
+                        <div class="col-4">
+                            <div class="city-date">${response.data.list[8].dt_txt}</div>
+                            <div class="city-temp">${Math.round(response.data.list[8].main.temp)}<sup>°C</sup></div>
+                        </div>
+
+                        <div class="col-4 align-items-center">
+                            <div class="city-date">${response.data.list[16].dt_txt}</div>
+                            <div class="city-temp">${Math.round(response.data.list[16].main.temp)}<sup>°C</sup></div>
+                        </div>
+
+                        <div class="col-4 align-items-center">
+                            <div class="city-date">${response.data.list[24].dt_txt}</div>
+                            <div class="city-temp">${Math.round(response.data.list[24].main.temp)}<sup>°C</sup></div>
+                        </div>
+
+                    </div>
+                    `
+                    li.innerHTML = forecastText
+                    forecastList.replaceChildren(li)
+
+                })
+                .catch(err => {
+                    console.log(err)
+                })
         })
         .catch(() => {
-            msg.textContent = "Please search for a valid city 😩";
+            msg.textContent = "Please search for a valid city 😩"
         });
 
     msg.textContent = "";
     form.reset();
     input.focus();
+
 })
