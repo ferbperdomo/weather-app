@@ -11,12 +11,14 @@ let apiKey = "d0b31d0dac9ba0b6a85727ee3e3eb4e7"
 
 let cityName
 
+let coord = {}
+
 form.addEventListener("submit", e => {
     e.preventDefault();
     let inputVal = input.value
 
-    const listItems = list.querySelectorAll(".card-section .city");
-    const listItemsArray = Array.from(listItems);
+    const listItems = list.querySelectorAll(".card-section .city")
+    const listItemsArray = Array.from(listItems)
 
     if (listItemsArray.length > 0) {
         const filteredArray = listItemsArray.filter(el => {
@@ -28,20 +30,20 @@ form.addEventListener("submit", e => {
                         .querySelector(".city-name span")
                         .textContent.toLowerCase();
                 } else {
-                    content = el.querySelector(".city-name").dataset.name.toLowerCase();
+                    content = el.querySelector(".city-name").dataset.name.toLowerCase()
                 }
             } else {
-                content = el.querySelector(".city-name span").textContent.toLowerCase();
+                content = el.querySelector(".city-name span").textContent.toLowerCase()
             }
-            return content == inputVal.toLowerCase();
+            return content == inputVal.toLowerCase()
         });
 
         if (filteredArray.length > 0) {
             msg.textContent = `You already know the weather for ${filteredArray[0].querySelector(".city-name span").textContent
                 } ...otherwise be more specific by providing the country code as well 😉`;
-            form.reset();
-            input.focus();
-            return;
+            form.reset()
+            input.focus()
+            return
         }
     }
 
@@ -50,6 +52,12 @@ form.addEventListener("submit", e => {
         .then(response => {
             cityName = response.data.name
             const { main, name, sys, weather } = response.data
+            coord = response.data.coord
+            const { main, name, sys, weather } = response.data
+            // console.log('prueba ---->', response.data)
+            // console.log('prueba1 ---->', coord.lat)
+            // console.log('prueba2 ---->', coord.lon)
+
             const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]
                 }.svg`
 
@@ -116,13 +124,15 @@ form.addEventListener("submit", e => {
                 .catch(err => {
                     console.log(err)
                 })
+            li.innerHTML = markup
+            list.replaceChildren(li)
+            drawMap(coord)
         })
         .catch(() => {
             msg.textContent = "Please search for a valid city 😩"
         });
 
-    msg.textContent = "";
-    form.reset();
-    input.focus();
-
+    msg.textContent = ""
+    form.reset()
+    input.focus()
 })
