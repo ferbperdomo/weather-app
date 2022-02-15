@@ -10,7 +10,6 @@ require("./config")(app);
 
 app.locals.siteTitle = `Weather-app`;
 app.locals.mapsApiKey = process.env.MAPS_API_KEY
-app.locals.weatherApiKey = process.env.WEATHER_API_KEY
 
 require("./config/session.config")(app)
 
