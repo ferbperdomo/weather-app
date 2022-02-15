@@ -1,17 +1,46 @@
-<h1>{{siteTitle}}</h1>
-<<<<<<< HEAD
-<ul>
-    <a href="/" class="btn btn-dark">Inicio</a>
-    <a href="/login" class="btn btn-dark">login</a>
-    <a href="/sign-up" class="btn btn-dark">sign-up</a>
-</ul>
-=======
+<div class="container">
+
+    <nav>
+        <h2>{{siteTitle}}</h2>
+    </nav>
+    <ul>
+        <a href="/" class="btn btn-dark btn-sm">Inicio</a>
+        <a href="/login" class="btn btn-dark btn-sm">login</a>
+        <a href="/sign-up" class="btn btn-dark btn-sm">sign-up</a>
+    </ul>
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-9">
+                <section class="top-banner">
+                    <form class="d-flex mb-5">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-dark" type="submit">Search</button>
+                    </form>
+                    <div class="msg"></div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <section class="card-section">
+                    <ul class="cities"></ul>
+                </section>
+            </div>
+        </div>
+
+    </div>
 
 
->>>>>>> 3db38b866ecb93633ebff57b00148c1a3dd91023
-<figure id="myMap"></figure>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/api-handler.js"></script>
+    <script src="/js/api-call.js"></script>
+</div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+{{!-- <figure id="myMap"></figure> --}}
+{{!--
 <script src="/js/places-map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key={{mapsApiKey}}&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{mapsApiKey}}&callback=initMap"></script> --}}
