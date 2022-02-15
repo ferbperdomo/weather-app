@@ -2,7 +2,6 @@ let map
 
 function initMap() {
     drawMap()
-    // getPlaces()
     getCoords()
 }
 
@@ -17,12 +16,6 @@ function drawMap() {
         }
     )
 }
-
-// function getPlaces() {
-//     axios.get('/api/places')
-//     .then(response => printMarkers(response.data))
-//     .catch(err => console.log(err))
-// }
 
 function getCoords() {
 
