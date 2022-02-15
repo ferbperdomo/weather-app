@@ -53,10 +53,6 @@ form.addEventListener("submit", e => {
             cityName = response.data.name
             const { main, name, sys, weather } = response.data
             coord = response.data.coord
-            const { main, name, sys, weather } = response.data
-            // console.log('prueba ---->', response.data)
-            // console.log('prueba1 ---->', coord.lat)
-            // console.log('prueba2 ---->', coord.lon)
 
             const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]
                 }.svg`
@@ -64,36 +60,37 @@ form.addEventListener("submit", e => {
             const li = document.createElement("li")
             li.classList.add("city")
             const markup = `
-      <div class= "row card align-items-center justify-content-around" style="border-radius: 25px">
-          <div class="col-3">
-            <h2 class="city-name" data-name="${name}, ${sys.country}">
-              <span>${name}</span>
-              <sup>${sys.country}</sup>
-            </h2>
-            <div class="city-temp">${Math.round(main.temp)}<sup>°C</sup></div>
-          </div>
-          <div class="col-3 align-items-center">
-            <figure>
-            <img class="city-icon" src="${icon}" alt="${weather[0]["description"]
+                <div class= "row card align-items-center justify-content-around" style="border-radius: 25px">
+                    <div class="col-3">
+                        <h2 class="city-name" data-name="${name}, ${sys.country}">
+                        <span>${name}</span>
+                        <sup>${sys.country}</sup>
+                        </h2>
+                        <div class="city-temp">${Math.round(main.temp)}<sup>°C</sup></div>
+                    </div>
+                    <div class="col-3 align-items-center">
+                        <figure>
+                        <img class="city-icon" src="${icon}" alt="${weather[0]["description"]
                 }">
-              <figcaption>${weather[0]["description"]}</figcaption>
-            </figure>
-          </div>
-      </div>
-      `
-
+                        <figcaption>${weather[0]["description"]}</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                `
             li.innerHTML = markup
             list.replaceChildren(li)
+            drawMap(coord)
 
         })
+
         .then(() => {
 
             API
                 .getForecast(cityName)
-                // console.log("API FORECAST--------------------->", cityName)
                 .then(response => {
+                    const eachday = response.data.list
                     const { main, weather, dt_txt, wind } = response.data.list
-
+                    console.log(eachday)
                     const li = document.createElement("li")
                     li.classList.add("forecast")
                     const forecastText = `
@@ -101,18 +98,21 @@ form.addEventListener("submit", e => {
                     <div class= "row card align-items-center justify-content-around" style="border-radius: 25px">
 
                         <div class="col-4">
-                            <div class="city-date">${response.data.list[8].dt_txt}</div>
-                            <div class="city-temp">${Math.round(response.data.list[8].main.temp)}<sup>°C</sup></div>
+                            <div class="city-date">Day: ${eachday[8].dt_txt}</div>
+                            <div class="city-temp">Temperature:${Math.round(eachday[8].main.temp)}<sup>°C</sup></div>
+                            <div class="city-temp">Feels like:${Math.round(eachday[8].main.feels_like)}<sup>°C</sup></div>
                         </div>
 
                         <div class="col-4 align-items-center">
-                            <div class="city-date">${response.data.list[16].dt_txt}</div>
-                            <div class="city-temp">${Math.round(response.data.list[16].main.temp)}<sup>°C</sup></div>
+                            <div class="city-date">Day: ${eachday[16].dt_txt}</div>
+                            <div class="city-temp">Temperature:${Math.round(eachday[16].main.temp)}<sup>°C</sup></div>
+                            <div class="city-temp">Feels like:${Math.round(eachday[16].main.feels_like)}<sup>°C</sup></div>
                         </div>
 
                         <div class="col-4 align-items-center">
-                            <div class="city-date">${response.data.list[24].dt_txt}</div>
-                            <div class="city-temp">${Math.round(response.data.list[24].main.temp)}<sup>°C</sup></div>
+                            <div class="city-date">Day: ${eachday[24].dt_txt}</div>
+                            <div class="city-temp">Temperature:${Math.round(eachday[24].main.temp)}<sup>°C</sup></div>
+                            <div class="city-temp">Feels like:${Math.round(eachday[24].main.feels_like)}<sup>°C</sup></div>
                         </div>
 
                     </div>
@@ -124,10 +124,9 @@ form.addEventListener("submit", e => {
                 .catch(err => {
                     console.log(err)
                 })
-            li.innerHTML = markup
-            list.replaceChildren(li)
-            drawMap(coord)
+
         })
+
         .catch(() => {
             msg.textContent = "Please search for a valid city 😩"
         });

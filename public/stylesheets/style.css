@@ -38,6 +38,10 @@ width: 3.5%;
   list-style: none;
   padding-left: 0%;
 }
+.forecasts {
+  list-style: none;
+  padding-left: 0%;
+}
 
 .card {
   flex-direction: row;
