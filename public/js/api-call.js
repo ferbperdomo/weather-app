@@ -99,8 +99,7 @@ form.addEventListener("submit", e => {
                 .getForecast(cityName)
                 .then(response => {
                     const eachday = response.data.list
-                    console.log(eachday[0])
-                    const { main, weather, dt_txt, wind } = response.data.list
+                    // const { main, weather, dt_txt, wind } = response.data.list
                     const li = document.createElement("li")
                     li.classList.add("forecast")
                     // let weatherIcon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]

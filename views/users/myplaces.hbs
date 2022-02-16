@@ -8,18 +8,15 @@
     </form>
 
 
-    <div class="row card align-items-center justify-content-around" style="border-radius: 25px">
-        <div class="col">
-            {{#each cities}}
-            <h2>{{this.cities }}</h2>
-            {{/each}}
-        </div>
-        <div class="col-3">
-            <h2 class="city-name" data-name="">
-                <span></span>
-                <sup></sup>
+    {{#each citiesData}}
+    <div class="row card align-items-center justify-content-around mb-4" style="border-radius: 25px">
+
+        <div class="col-9">
+            <h2 class="city-name" data-name="{{name}}, {{sys.country}}">
+                <span>{{name}}</span>
+                <sup>{{sys.country}}</sup>
             </h2>
-            <div class="city-temp"><sup></sup></div>
+            <div class="city-temp">{{main.temp}}<sup>ºC</sup></div>
         </div>
         <div class="col-3 align-items-center">
             <figure>
@@ -28,9 +25,11 @@
             </figure>
         </div>
     </div>
+    {{/each}}
 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/js/api-handler.js"></script>
 <script src="/js/api-call.js"></script>
+<script src="./../../services/weather-handler.js"></script>
