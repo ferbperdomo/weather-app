@@ -10,12 +10,6 @@ const list = document.querySelector(".card-section .cities")
 // Forecast card in index view
 const forecastList = document.querySelector(".forecast-section .forecasts")
 
-// Detailed Card
-const cardDetails = document.querySelector(".view-details")
-const forecastDetails = document.querySelector(".detailed-section .details")
-
-
-
 let apiKey = "d0b31d0dac9ba0b6a85727ee3e3eb4e7"
 
 let cityName

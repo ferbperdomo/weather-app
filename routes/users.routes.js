@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const { response } = require('express')
 const { isLoggedIn } = require('../middlewares/route-guard')
 const User = require("../models/User.model")
 
@@ -59,12 +60,28 @@ router.get('/eachplace/:cityName', (req, res, next) => {
     const { cityName } = req.params
 
     weatherApi
-        .getForecast
+        .getForecast(cityName)
+
+        .then((response) => {
+            console.log(response.data.list)
+            res.render('users/eachplace', response.data.list)
+            // const weatherIntervals = response.data.list.map(interval => {
+
+            //     const formattedDate = interval.dt_text
+
+            //     return {
+            //         main: interval.main,
+            //         weather: interval.weather,
+            //         wind: interval.wind,
+            //         date: formattedDate
+            //     }
+            // })
+            // res.render('users/eachplace', { weatherIntervals })
+            // console.log(response.data.list[0])
+        })
 
 
-
-
-    res.render('users/eachplace', { cityName })
+        .catch(err => console.log(err))
 })
 
 router.get('/suggestions', (req, res, next) => {

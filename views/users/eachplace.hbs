@@ -1,12 +1,48 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-9">
-            <section class="detailed-section">
-                <ul class="details">
-                    <h1>Detailed view: {{cityName}}</h1>
-                </ul>
-                <button class="btn btn-dark view-details" type="submit">Search</button>
-            </section>
+        <div class="col-12">
+            {{!-- {{#each list[0]}}
+            <p>{{main}}</p>
+            {{/each}} --}}
+            <div class="container">
+                <div class="row card align-items-center justify-content-around" style="border-radius: 25px">
+                    <div class="col-6">
+                        <h2>{{cityName}}</h2>
+                        <ul>
+                            <li>Temperature: {{[0].main.temp}}</li>
+                            <li>Max: {{[0].main.temp_max}}</li>
+                            <li>Min: {{[0].main.temp_min}}</li>
+                            <li>Date: {{[0].dt_txt}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <h2>Icono va aquí</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row card align-items-center justify-content-around" style="border-radius: 25px">
+                    <div class="col-3">
+                        {{[8].dt_txt}}
+                        {{[8].main.temp_max}}{{[8].main.temp_min}}
+
+                    </div>
+                    <div class="col-3">
+                        {{[16].dt_txt}}
+                        {{[16].main.temp_max}}{{[16].main.temp_min}}
+                    </div>
+                    <div class="col-3">
+                        {{[24].dt_txt}}
+                        {{[24].main.temp_max}}{{[24].main.temp_min}}
+                    </div>
+                    <div class="col-3">
+                        {{[32].dt_txt}}
+                        {{[32].main.temp_max}}{{[32].main.temp_min}}
+                    </div>
+                </div>
+            </div>
+
+            {{!-- <p>{{}}</p> --}}
         </div>
     </div>
 </div>
@@ -15,3 +51,4 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/js/api-handler.js"></script>
 <script src="/js/api-call.js"></script>
+<script src="./../../services/weather-handler.js"></script>
