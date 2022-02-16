@@ -3,18 +3,24 @@ const { isLoggedIn } = require('../middlewares/route-guard')
 const User = require("../models/User.model")
 
 const weatherHandler = require('./../services/weather-handler')
-const weatherApi = new weatherHandler()
 
 
 router.get('/myplaces', isLoggedIn, (req, res, next) => {
     const { cities } = req.session.currentUser
+    const weatherApi = new weatherHandler()
 
-    console.log('ESTAS DEBERÍAN SER LAS CIUDADES', req.session.currentUser.cities)
-    console.log('ESTAS SON LAS CIUDADES', cities)
+    
 
-    User
-        .find({ cities })
-        .then(cities => res.render('users/myplaces', { cities }))
+    weatherApi
+        .getAllCitiesInfo(cities)
+        .then(response => {
+            const citiesData = response.map(eachCityInfo => eachCityInfo.data)
+            const formattedTemp = citiesData.map(eachCityTemp => {
+                
+            })
+            res.render('users/myplaces', {citiesData})
+            console.log(citiesData)
+        })
         .catch(err => console.log(err))
 
 })
@@ -22,26 +28,30 @@ router.get('/myplaces', isLoggedIn, (req, res, next) => {
 router.post('/myplaces/:cityName', (req, res, next) => {
     const { cityName } = req.params
     const id = req.session.currentUser._id
+    console.log('ESTE ES EL ID', req.session.currentUser._id)
+    if (req.session.currentUser) {
+        if (cityName != cityName)
+            res.render('index', { errorMessage: 'This city is already your favorite' })
+        console.log('ENTRA EN ESTE')
+        return
+    } else {
+        User
+            .findByIdAndUpdate(id, { $push: { cities: cityName } }, { new: true })
+            .then(updatedUser => {
+                req.session.currentUser = updatedUser
+                res.redirect('/myplaces')
+            })
+            .catch(err => next(err))
+    }
 
-    User
-        .findByIdAndUpdate(id, { $push: { cities: cityName } }, { new: true })
-        .then(updatedUser => {
-            req.session.currentUser = updatedUser
-            res.redirect(`/myplaces`)
-        })
-        .catch(err => next(err))
-    // if (cityName === cityName) {
-    //     res.render('index', { errorMessage: 'This city is already your favorite' })
-    //     return
-    // } else {
-    //     User
-    //         .findByIdAndUpdate(id, { $push: { cities: cityName } }, { new: true })
-    //         .then(updatedUser => {
-    //             req.session.currentUser = updatedUser
-    //             res.redirect(`/myplaces`)
-    //         })
-    //         .catch(err => next(err))
-    // }
+    // User
+    //     .findByIdAndUpdate(id, { $push: { cities: cityName } }, { new: true })
+    //     .then(updatedUser => {
+    //         req.session.currentUser = updatedUser
+    //         res.redirect(`/myplaces`)
+    //     })
+    //     .catch(err => next(err))
+
 
 })
 
@@ -61,13 +71,11 @@ router.get('/eachplace/:cityName', (req, res, next) => {
     weatherApi
         .getForecast
 
-
-
-
     res.render('users/eachplace', { cityName })
 })
 
 router.get('/suggestions', (req, res, next) => {
     res.render('users/suggestions')
 })
+
 module.exports = router 
