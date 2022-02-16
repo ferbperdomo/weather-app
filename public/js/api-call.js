@@ -75,16 +75,21 @@ form.addEventListener("submit", e => {
                     </div>
                     <div class="col-3 align-items-center">
                         <figure>
-                        <img class="city-icon" src="${icon}" alt="${weather[0]["description"]
-                }">
+                        <img class="city-icon" src="${icon}" alt="${weather[0]["description"]}">
                         <figcaption>${weather[0]["description"]}</figcaption>
                         </figure>
                     </div>
+                    <form action="/myplaces/${cityName}" method="post">
+                        <div class="d-grid d-flex justify-content-end">
+                            <button class="btn btn-dark btn-sm mb-3">Add to favs</button>
+                        </div>
+                    </form>
                 </div>
+                
                 `
             li.innerHTML = markup
             list.replaceChildren(li)
-            drawMap(coord)
+            initMap(coord)
 
         })
 
@@ -106,22 +111,18 @@ form.addEventListener("submit", e => {
                     <div class= "row card align-items-center justify-content-around" style="border-radius: 25px">
 
                         <div class="col-4">
-                            <div class="city-date"> ${eachday[8].dt_txt.substring(8, 10)}-${eachday[8].dt_txt.substring(5, 7)}</div>
-                            <div class="city-temp">${Math.round(eachday[8].main.temp)}<sup>°C</sup></div>
-                            <div class="city-temp">Feels like:${Math.round(eachday[8].main.feels_like)}<sup>°C</sup></div>
-                            
+                            <div class="city-temp">T:${Math.round(eachday[8].main.temp)}<sup>°C</sup></div>
+                            <div class="city-temp">S:${Math.round(eachday[8].main.feels_like)}<sup>°C</sup></div>
                         </div>
 
                         <div class="col-4 align-items-center">
-                            <div class="city-date"> ${eachday[16].dt_txt.substring(8, 10)}-${eachday[16].dt_txt.substring(5, 7)}</div>
-                            <div class="city-temp">${Math.round(eachday[16].main.temp)}<sup>°C</sup></div>
-                            <div class="city-temp">Feels like:${Math.round(eachday[16].main.feels_like)}<sup>°C</sup></div>
+                            <div class="city-temp">T:${Math.round(eachday[16].main.temp)}<sup>°C</sup></div>
+                            <div class="city-temp">S:${Math.round(eachday[16].main.feels_like)}<sup>°C</sup></div>
                         </div>
 
                         <div class="col-4 align-items-center">
-                            <div class="city-date"> ${eachday[24].dt_txt.substring(8, 10)}-${eachday[24].dt_txt.substring(5, 7)}</div>
-                            <div class="city-temp">${Math.round(eachday[24].main.temp)}<sup>°C</sup></div>
-                            <div class="city-temp">Feels like:${Math.round(eachday[24].main.feels_like)}<sup>°C</sup></div>
+                            <div class="city-temp">T:${Math.round(eachday[24].main.temp)}<sup>°C</sup></div>
+                            <div class="city-temp">S:${Math.round(eachday[24].main.feels_like)}<sup>°C</sup></div>
                         </div>
 
                     </div>

@@ -4,7 +4,7 @@ module.exports = app => {
   app.use("/", indexRouter);
 
   const userRouter = require("./users.routes");
-  app.use("/places", userRouter)
+  app.use("/", userRouter)
 
   const authRouter = require("./auth.routes")
   app.use("/", authRouter)
