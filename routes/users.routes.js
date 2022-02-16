@@ -10,8 +10,6 @@ router.get('/myplaces', isLoggedIn, (req, res, next) => {
     const { cities } = req.session.currentUser
     const weatherApi = new weatherHandler()
 
-
-
     weatherApi
         .getAllCitiesInfo(cities)
         .then(response => {
@@ -44,22 +42,13 @@ router.post('/myplaces/:cityName', (req, res, next) => {
             })
             .catch(err => next(err))
     }
-
-    // User
-    //     .findByIdAndUpdate(id, { $push: { cities: cityName } }, { new: true })
-    //     .then(updatedUser => {
-    //         req.session.currentUser = updatedUser
-    //         res.redirect(`/myplaces`)
-    //     })
-    //     .catch(err => next(err))
-
-
 })
 
 
 router.get('/eachplace/:cityName', (req, res, next) => {
 
     const { cityName } = req.params
+    const weatherApi = new weatherHandler()
 
     const weatherApi = new weatherHandler()
 
