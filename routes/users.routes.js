@@ -2,6 +2,9 @@ const router = require('express').Router()
 const { isLoggedIn } = require('../middlewares/route-guard')
 const User = require("../models/User.model")
 
+const weatherHandler = require('./../services/weather-handler')
+const weatherApi = new weatherHandler()
+
 
 router.get('/myplaces', isLoggedIn, (req, res, next) => {
     const { cities } = req.session.currentUser
@@ -51,8 +54,17 @@ router.post('/myplaces/:cityName', (req, res, next) => {
 // vas a tener que gestionar llamadas a la api
 // primero sacas los favoritos del current user y luego llamas a la api para que te muestre el tiempo de esos favs
 
-router.get('/eachplace', (req, res, next) => {
-    res.render('users/eachplace')
+router.get('/eachplace/:cityName', (req, res, next) => {
+
+    const { cityName } = req.params
+
+    weatherApi
+        .getForecast
+
+
+
+
+    res.render('users/eachplace', { cityName })
 })
 
 router.get('/suggestions', (req, res, next) => {
