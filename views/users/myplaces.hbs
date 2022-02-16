@@ -9,22 +9,25 @@
 
 
     {{#each citiesData}}
-    <div class="row card align-items-center justify-content-around mb-4" style="border-radius: 25px">
+    <div class="row card align-items-center justify-content-center mb-4" style="border-radius: 25px">
 
-        <div class="col-9">
+        <div class="col">
             <h2 class="city-name" data-name="{{name}}, {{sys.country}}">
                 <span>{{name}}</span>
                 <sup>{{sys.country}}</sup>
             </h2>
             <div class="city-temp">{{main.temp}}<sup>ºC</sup></div>
-            <a href="/eachplace/{{name}}">Details</a>
+            <div class="d-grid d-flex justify-content-end">
+                <a href="/eachplace/{{name}}" class="btn btn-dark btn-sm mb-3">Detailes</a>
+            </div>
+
         </div>
-        <div class="col-3 align-items-center">
+        {{!-- <div class="col-3 align-items-center">
             <figure>
                 <img class="city-icon" src="" alt="">
                 <figcaption></figcaption>
             </figure>
-        </div>
+        </div> --}}
     </div>
     {{/each}}
 
