@@ -1,8 +1,21 @@
 <div class="container">
+
     <h1>Your fav places!</h1>
+    <form action="/">
+        <div class="d-grid d-flex justify-content-end">
+            <button class="btn btn-dark btn-sm mb-3">Search for more</button>
+        </div>
+    </form>
+
+
     <div class="row card align-items-center justify-content-around" style="border-radius: 25px">
+        <div class="col">
+            {{#each cities}}
+            <h2>{{this.cities }}</h2>
+            {{/each}}
+        </div>
         <div class="col-3">
-            <h2 class="city-name" data-name="${name}, ${sys.country}">
+            <h2 class="city-name" data-name="">
                 <span></span>
                 <sup></sup>
             </h2>

@@ -1,19 +1,44 @@
 const router = require('express').Router()
 const { isLoggedIn } = require('../middlewares/route-guard')
+const User = require("../models/User.model")
 
 
 router.get('/myplaces', isLoggedIn, (req, res, next) => {
-    res.render('users/myplaces')
-})
+    const { cities } = req.session.currentUser
 
-router.post('/myplaces', (req, res, next) => {
-    const { cityName } = req.params
-    const { id } = req.params
+    console.log('ESTAS DEBERÍAN SER LAS CIUDADES', req.session.currentUser.cities)
+    console.log('ESTAS SON LAS CIUDADES', cities)
 
     User
-        .findByIdAndUpdate(id, { cityName }, { new: true })
-        .then(() => res.redirect(`/myplaces`))
+        .find({ cities })
+        .then(cities => res.render('users/myplaces', { cities }))
+        .catch(err => console.log(err))
+
+})
+
+router.post('/myplaces/:cityName', (req, res, next) => {
+    const { cityName } = req.params
+    const id = req.session.currentUser._id
+
+    User
+        .findByIdAndUpdate(id, { $push: { cities: cityName } }, { new: true })
+        .then(updatedUser => {
+            req.session.currentUser = updatedUser
+            res.redirect(`/myplaces`)
+        })
         .catch(err => next(err))
+    // if (cityName === cityName) {
+    //     res.render('index', { errorMessage: 'This city is already your favorite' })
+    //     return
+    // } else {
+    //     User
+    //         .findByIdAndUpdate(id, { $push: { cities: cityName } }, { new: true })
+    //         .then(updatedUser => {
+    //             req.session.currentUser = updatedUser
+    //             res.redirect(`/myplaces`)
+    //         })
+    //         .catch(err => next(err))
+    // }
 
 })
 
