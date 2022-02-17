@@ -1,5 +1,4 @@
 const API = new ApiHandler()
-
 const form = document.querySelector(".top-banner form")
 const input = document.querySelector(".top-banner input")
 const msg = document.querySelector(".top-banner .msg")
@@ -82,7 +81,7 @@ form.addEventListener("submit", e => {
                     <div class="col-4 text-center">
                         <figure>
                         <img class="city-icon" src="${icon}" alt="${weather[0]["description"]}">
-                        <figcaption>${weather[0]["description"]}</figcaption>
+                        <figcaption class="figcaption">${weather[0]["description"]}</figcaption>
                         </figure>
                     </div>
                     <form action="/myplaces/${cityName}" method="post">

@@ -2,7 +2,6 @@ const router = require('express').Router()
 const { response } = require('express')
 const { isLoggedIn } = require('../middlewares/route-guard')
 const User = require("../models/User.model")
-var d2d = require('degrees-to-direction')
 
 const weatherHandler = require('./../services/weather-handler')
 
@@ -29,7 +28,7 @@ router.get('/myplaces', isLoggedIn, (req, res, next) => {
 
             res.render('users/myplaces', { citiesData })
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 
 })
 
@@ -39,7 +38,6 @@ router.post('/myplaces/:cityName', (req, res, next) => {
         const id = req.session.currentUser._id
         if (req.session.currentUser.cities.includes(cityName)) {
             res.render('index', { msg: 'This city is already your favorite 😉' })
-            console.log('ENTRA EN ESTE')
             return
         } else {
             User
@@ -51,9 +49,7 @@ router.post('/myplaces/:cityName', (req, res, next) => {
                 .catch(err => next(err))
         }
     }
-
     res.render('index', { msg: 'You got to be user 😉' })
-
 })
 
 
@@ -93,9 +89,7 @@ router.get('/eachplace/:cityName', (req, res, next) => {
             res.render('users/eachplace', { weatherIntervals, cityName })
 
         })
-
-
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 router.get('/suggestions', (req, res, next) => {
