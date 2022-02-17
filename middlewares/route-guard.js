@@ -3,4 +3,8 @@ const isLoggedIn = (req, res, next) => {
         errorMessage: 'You need to be a user 😩. Register 😉'
     })
 }
-module.exports = { isLoggedIn }
+
+const isLoggedOut = (req, res, next) => {
+    req.session.currentUser ? res.redirect('/') : next()
+}
+module.exports = { isLoggedIn, isLoggedOut }

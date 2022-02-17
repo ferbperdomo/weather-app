@@ -4,7 +4,7 @@
 
             <div class="container">
                 <div class="row card align-items-center justify-content-around">
-                    <div class="col-6">
+                    <div class="col-6 text-center">
                         <h1>{{cityName}}</h1>
                         {{weatherIntervals.[0].date}}
                         <br>
@@ -12,7 +12,7 @@
 
 
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 text-center">
                         <img src={{weatherIntervals.[0].iconUrl}} alt="Icon showing todays weather">
                         <br>
                         {{weatherIntervals.[0].description}}
@@ -20,27 +20,25 @@
                 </div>
             </div>
 
-            <div class="container">
-                <div class="row card align-items-center justify-content-around">
-                    <div class="col">
-                        max:{{weatherIntervals.[0].maxTemp}} <sup>°</sup>/ min:
-                        {{weatherIntervals.[0].main.temp_min}}<sup>°</sup> |
-                        pressure: {{weatherIntervals.[0].main.pressure}} |
-                        humidity: {{weatherIntervals.[0].main.humidity}} |
-                        wind: {{weatherIntervals.[0].wind.deg}}
-
-
-                    </div>
+            <div class="container ">
+                <div class="row card align-items-center d-flex ">
+                    <div class="col-3">max:{{weatherIntervals.[0].maxTemp}} <sup>°</sup>/ min:
+                        {{weatherIntervals.[0].main.temp_min}}<sup>°</sup></div>
+                    <div class="col-3">pressure: {{weatherIntervals.[0].main.pressure}}</div>
+                    <div class="col-3">humidity: {{weatherIntervals.[0].main.humidity}}</div>
+                    <div class="col-3">wind: {{weatherIntervals.[0].wind.deg}}</div>
 
                 </div>
 
             </div>
 
             <div class="container">
-                <div class="row card align-items-center justify-content-around">
+                <div class="row card align-items-center justify-content-around text-center">
                     <div class="col-3">
                         {{weatherIntervals.[8].date}}
+                        <br>
                         <img src={{weatherIntervals.[8].iconUrl8}} alt="icon showing weather 24 from now">
+                        <br>
                         {{weatherIntervals.[8].description}}
                         <br>
                         {{weatherIntervals.[8].maxTemp}}
@@ -49,6 +47,7 @@
                     </div>
                     <div class="col-3">
                         {{weatherIntervals.[16].date}}
+                        <br>
                         <img src={{weatherIntervals.[16].iconUrl16}} alt="icon showing weather 48 from now">
                         <br>
                         {{weatherIntervals.[26].description}}
@@ -58,6 +57,7 @@
                     </div>
                     <div class="col-3">
                         {{weatherIntervals.[24].date}}
+                        <br>
                         <img src={{weatherIntervals.[24].iconUrl24}} alt="icon showing weather 72 from now">
                         <br>
                         {{weatherIntervals.[24].description}}
@@ -67,6 +67,7 @@
                     </div>
                     <div class="col-3">
                         {{weatherIntervals.[32].date}}
+                        <br>
                         <img src={{weatherIntervals.[32].iconUrl32}} alt="icon showing weather 96 from now">
                         <br>
                         {{weatherIntervals.[32].description}}

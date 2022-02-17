@@ -1,5 +1,7 @@
 const router = require("express").Router()
 const bcryptjs = require('bcryptjs')
+const { isLoggedOut } = require('../middlewares/route-guard')
+
 
 const User = require("./../models/User.model")
 const saltRounds = 10
@@ -20,7 +22,7 @@ router.post("/sign-up", (req, res, next) => {
 })
 
 // Log-in form
-router.get("/login", (req, res, next) => res.render('auth/login-form'))
+router.get("/login", isLoggedOut, (req, res, next) => res.render('auth/login-form'))
 
 router.post("/login", (req, res, next) => {
 

@@ -61,8 +61,6 @@ router.get('/eachplace/:cityName', (req, res, next) => {
                 const formattedMaxTemp = Math.round(interval.main.temp_max)
                 const formattedMinTemp = Math.round(interval.main.temp_min)
 
-
-
                 return {
                     main: interval.main,
                     temp: formattedTemp,

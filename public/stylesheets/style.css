@@ -51,11 +51,16 @@ h2 {
   align-items: center;
   padding-top: 25px;
   padding-bottom: 0px;
-  box-shadow: 2px 2px 10px 0 rgb(243, 209, 171);
+  box-shadow: 2px 2px 10px 0 rgb(243, 209, 170);
+  
   /* background-image: url('https://mdbgo.io/ascensus/mdb-advanced/img/clouds.gif');
   background-position:bottom ;
   background-size: cover;
   color: white; */
+}
+
+.card:hover {
+  transform: scale(1.005);
 }
 
 
