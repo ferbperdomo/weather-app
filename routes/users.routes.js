@@ -55,21 +55,34 @@ router.get('/eachplace/:cityName', (req, res, next) => {
         .getForecast(cityName)
 
         .then((response) => {
-            console.log(response.data.list)
-            res.render('users/eachplace', response.data.list)
-            // const weatherIntervals = response.data.list.map(interval => {
+            //console.log(response.data.list)
+            //res.render('users/eachplace', response.data.list)
 
-            //     const formattedDate = interval.dt_text
+            const weatherIntervals = response.data.list.map(interval => {
+                const formattedDate = `${interval.dt_txt.substring(8, 10)}-${interval.dt_txt.substring(5, 7)}`
+                const formattedTemp = Math.round(interval.main.temp)
+                const formattedMaxTemp = Math.round(interval.main.temp_max)
+                const formattedMinTemp = Math.round(interval.main.temp_min)
 
-            //     return {
-            //         main: interval.main,
-            //         weather: interval.weather,
-            //         wind: interval.wind,
-            //         date: formattedDate
-            //     }
-            // })
-            // res.render('users/eachplace', { weatherIntervals })
-            // console.log(response.data.list[0])
+                return {
+                    // name: cityName,
+                    main: interval.main,
+                    temp: formattedTemp,
+                    maxTemp: formattedMaxTemp,
+                    minTemp: formattedMinTemp,
+                    weather: interval.weather[0].description,
+                    wind: interval.wind,
+                    date: formattedDate
+
+                }
+            })
+            res.render('users/eachplace', weatherIntervals)
+            // console.log("MAIN ->", main)
+            // console.log("temp ->", temp)
+            console.log(weatherIntervals)
+            console.log(weatherIntervals[0].weather[0].description)
+
+
         })
 
 
