@@ -23,7 +23,14 @@ h2 {
   width: 30px;
 }
 .city-icon{
-  width: 50%;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+
+.description{
+  padding-top: 20px;
+  font-size: .8em;
 }
 
 /* .ligth-icon{
@@ -73,9 +80,14 @@ h2 {
 }
 
 footer {
-margin: 30px auto;
-text-decoration: none;
-list-style: none;
+  text-align: center;
+  text-decoration: none;
+  list-style: none;
+  font-size: 1em;
+  padding: 5px;
+  position:fixed;
+  width: 100%;
+  bottom: 0px;
 }
 
 @media (min-width: 576px){

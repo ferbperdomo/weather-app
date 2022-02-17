@@ -1,26 +1,35 @@
 <div class="container">
-
-    <h1>Your fav places!</h1>
-    <form action="/">
-        <div class="d-grid d-flex justify-content-end">
-            <button class="btn btn-dark btn-sm mb-3">Search for more</button>
-        </div>
-    </form>
+    <div class="d-flex justify-content-between mb-5">
+        <h1>Your fav places!</h1>
+        <form action="/">
+            <div class="d-grid d-flex justify-content-end">
+                <button class="btn btn-outline-dark btn-sm mb-3">Search for more</button>
+            </div>
+        </form>
+    </div>
 
 
     {{#each citiesData}}
-    <div class="row card align-items-center justify-content-center mb-4" style="border-radius: 25px">
+    <div class="row justify-content-center">
+        <div class="col-9 mb-3">
+            <div class="row card align-items-center justify-content-around" style="border-radius: 5px">
+                <div class="col-3 text-center">
+                    <h2 class="city-name" data-name="{{name}}, {{sys.country}}">
+                        <span>{{name}}</span>
+                        <sup>{{sys.country}}</sup>
+                        <div class="city-temp">{{temp}}<sup>ºC</sup></div>
+                        <p class="description">{{description}}</p>
+                    </h2>
+                </div>
+                <div class="col-3 text-center">
+                    <img class="city-icon text-center" src="{{iconUrl}}" alt="">
+                    <div class="d-grid text-center">
+                        <a href="/eachplace/{{name}}" class="btn btn-sm mb-3">Details</a>
+                    </div>
+                </div>
 
-        <div class="col">
-            <h2 class="city-name" data-name="{{name}}, {{sys.country}}">
-                <span>{{name}}</span>
-                <sup>{{sys.country}}</sup>
-            </h2>
-            <div class="city-temp">{{main.temp}}<sup>ºC</sup></div>
-            <div class="d-grid d-flex justify-content-end">
-                <a href="/eachplace/{{name}}" class="btn btn-dark btn-sm mb-3">Detailes</a>
+
             </div>
-
         </div>
         {{!-- <div class="col-3 align-items-center">
             <figure>

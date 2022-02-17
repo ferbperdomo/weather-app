@@ -14,10 +14,21 @@ router.get('/myplaces', isLoggedIn, (req, res, next) => {
     weatherApi
         .getAllCitiesInfo(cities)
         .then(response => {
-            const citiesData = response.map(eachCityInfo => eachCityInfo.data)
-            const formattedTemp = citiesData.map(eachCityTemp => {
+            const citiesData = response.map(eachCityInfo => {
+                console.log('EACH CITYYYYY ------->', eachCityInfo.data.name)
 
+                const formattedTemp = Math.round(eachCityInfo.data.main.temp)
+
+                return {
+                    name: eachCityInfo.data.name,
+                    main: eachCityInfo.main,
+                    temp: formattedTemp,
+                    description: eachCityInfo.data.weather[0].description,
+                    iconUrl: `https://openweathermap.org/img/wn/${eachCityInfo.data.weather[0].icon}@2x.png`,
+
+                }
             })
+
             res.render('users/myplaces', { citiesData })
         })
         .catch(err => console.log(err))
@@ -78,7 +89,6 @@ router.get('/eachplace/:cityName', (req, res, next) => {
                 }
             })
             res.render('users/eachplace', { weatherIntervals, cityName })
-            console.log(weatherIntervals[0].wind)
 
         })
 
