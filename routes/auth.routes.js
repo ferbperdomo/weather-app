@@ -7,7 +7,7 @@ const User = require("./../models/User.model")
 const saltRounds = 10
 
 // Sign-up form
-router.get("/sign-up", (req, res, next) => res.render("auth/signup-form"))
+router.get("/sign-up", isLoggedOut, (req, res, next) => res.render("auth/signup-form"))
 
 router.post("/sign-up", (req, res, next) => {
 

@@ -94,5 +94,14 @@ footer {
   
 }
 
+
+.not-show {
+  display: none;
+}
+
+.show {
+  display: initial;
+}
+
  
 

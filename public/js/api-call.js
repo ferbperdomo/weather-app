@@ -3,6 +3,8 @@ const API = new ApiHandler()
 const form = document.querySelector(".top-banner form")
 const input = document.querySelector(".top-banner input")
 const msg = document.querySelector(".top-banner .msg")
+const mapSection = document.getElementById('myMap')
+const indexMsg = document.getElementById('overlay')
 
 // Cuerrent weather card in index view
 const list = document.querySelector(".card-section .cities")
@@ -18,6 +20,12 @@ let coord = {}
 
 form.addEventListener("submit", e => {
     e.preventDefault();
+
+    mapSection.classList.remove('not-show')
+    indexMsg.classList.remove('show')
+    indexMsg.classList.add('not-show')
+
+
     let inputVal = input.value
 
     const listItems = list.querySelectorAll(".card-section .city")
@@ -63,7 +71,7 @@ form.addEventListener("submit", e => {
             const li = document.createElement("li")
             li.classList.add("city")
             const markup = `
-                <div class= "row card align-items-center justify-content-around" style="border-radius: 5px">
+                <div class= "row card align-items-center justify-content-around" id="city" style="border-radius: 5px">
                     <div class="col-3 text-center">
                         <h2 class="city-name" data-name="${name}, ${sys.country}">
                         <span>${name}</span>
@@ -113,19 +121,22 @@ form.addEventListener("submit", e => {
                     <div class= "row card align-items-center" style="border-radius: 5px">
 
                         <div class="col-4 mb-3 text-center">
-                            <img class="city-icon" src="${icon1}" alt="">
+                        <img class="city-icon" src="${icon1}" alt="">
+                        <p class="city-date">${weatherList[8].dt_txt.substring(8, 10)}-${weatherList[8].dt_txt.substring(5, 7)}<p>
                             <p class="city-temp">${Math.round(eachday[8].main.temp)}<sup>°C</sup></p>
                             <p class="city-feels">Feels like: ${Math.round(eachday[8].main.feels_like)}<sup>°C</sup></p>
                         </div>
 
                         <div class="col-4 mb-3 text-center ">
-                            <img class="city-icon" src="${icon2}" alt="">
+                        <img class="city-icon" src="${icon2}" alt="">
+                        <p class="city-date">${weatherList[16].dt_txt.substring(8, 10)}-${weatherList[16].dt_txt.substring(5, 7)}<p>
                             <p class="city-temp">${Math.round(eachday[16].main.temp)}<sup>°C</sup></p>
                             <p class="city-feels">Feels like: ${Math.round(eachday[16].main.feels_like)}<sup>°C</sup></p>
                         </div>
 
                         <div class="col-4 mb-3 text-center">
-                            <img class="city-icon" src="${icon3}" alt="">
+                        <img class="city-icon" src="${icon3}" alt="">
+                        <p class="city-date">${weatherList[24].dt_txt.substring(8, 10)}-${weatherList[24].dt_txt.substring(5, 7)}<p>
                             <p class="city-temp">${Math.round(eachday[24].main.temp)}<sup>°C</sup></p>
                             <p class="city-feels">Feels like: ${Math.round(eachday[24].main.feels_like)}<sup>°C</sup></p>
                         </div>
