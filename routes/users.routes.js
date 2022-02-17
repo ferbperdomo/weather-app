@@ -49,6 +49,7 @@ router.get('/eachplace/:cityName', (req, res, next) => {
     const { cityName } = req.params
     const weatherApi = new weatherHandler()
 
+
     weatherApi
         .getForecast(cityName)
 
