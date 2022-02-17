@@ -79,10 +79,9 @@ form.addEventListener("submit", e => {
                     </div>
                     <form action="/myplaces/${cityName}" method="post">
                         <div class="d-grid d-flex justify-content-end">
-                            <button class="btn btn-dark btn-sm mb-3">Add to favs</button>
+                            <button class="btn btn-sm mb-3">Add to favs</button>
                         </div>
                     </form>
-                <a href="/eachplace/${cityName}" class="btn btn-dark btn-sm pruebadetails">Detailed view</a>
 
                 </div>
                 
@@ -98,28 +97,36 @@ form.addEventListener("submit", e => {
             API
                 .getForecast(cityName)
                 .then(response => {
-                    const eachday = response.data.list
-                    // const { main, weather, dt_txt, wind } = response.data.list
+                    const { main, weather, dt_txt, wind } = response.data.list
+                    const weatherList = response.data.list
+                    console.log('weatherlisssssstttt', weatherList)
+
                     const li = document.createElement("li")
                     li.classList.add("forecast")
-                    // let weatherIcon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]
-                    //     }.svg`
+
+                    const eachday = response.data.list
+                    const icon1 = `https://openweathermap.org/img/wn/${weatherList[8].weather[0].icon}@2x.png`;
+                    const icon2 = `https://openweathermap.org/img/wn/${weatherList[16].weather[0].icon}@2x.png`;
+                    const icon3 = `https://openweathermap.org/img/wn/${weatherList[24].weather[0].icon}@2x.png`;
 
                     const forecastText = `
 
-                    <div class= "row card align-items-center justify-content-around" style="border-radius: 25px">
+                    <div class= "row card align-items-center justify-content-start" style="border-radius: 25px">
 
-                        <div class="col-4">
-                            <div class="city-temp">T:${Math.round(eachday[8].main.temp)}<sup>°C</sup></div>
+                        <div class="col-4 align-items-center mb-3">
+                            <img class="city-icon" src="${icon1}" alt="">
+                            <div class="city-temp">Temp:${Math.round(eachday[8].main.temp)}<sup>°C</sup></div>
                             <div class="city-temp">S:${Math.round(eachday[8].main.feels_like)}<sup>°C</sup></div>
                         </div>
 
-                        <div class="col-4 align-items-center">
+                        <div class="col-4 align-items-center mb-3">
+                            <img class="city-icon" src="${icon2}" alt="">
                             <div class="city-temp">T:${Math.round(eachday[16].main.temp)}<sup>°C</sup></div>
                             <div class="city-temp">S:${Math.round(eachday[16].main.feels_like)}<sup>°C</sup></div>
                         </div>
 
-                        <div class="col-4 align-items-center">
+                        <div class="col-4 align-items-center mb-3">
+                            <img class="city-icon" src="${icon3}" alt="">
                             <div class="city-temp">T:${Math.round(eachday[24].main.temp)}<sup>°C</sup></div>
                             <div class="city-temp">S:${Math.round(eachday[24].main.feels_like)}<sup>°C</sup></div>
                         </div>

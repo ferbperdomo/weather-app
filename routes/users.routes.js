@@ -18,7 +18,6 @@ router.get('/myplaces', isLoggedIn, (req, res, next) => {
 
             })
             res.render('users/myplaces', { citiesData })
-            console.log(citiesData)
         })
         .catch(err => console.log(err))
 
@@ -28,20 +27,20 @@ router.post('/myplaces/:cityName', (req, res, next) => {
     const { cityName } = req.params
     const id = req.session.currentUser._id
     console.log('ESTE ES EL ID', req.session.currentUser._id)
-    if (req.session.currentUser) {
-        if (cityName != cityName)
-            res.render('index', { errorMessage: 'This city is already your favorite' })
-        console.log('ENTRA EN ESTE')
-        return
-    } else {
-        User
-            .findByIdAndUpdate(id, { $push: { cities: cityName } }, { new: true })
-            .then(updatedUser => {
-                req.session.currentUser = updatedUser
-                res.redirect('/myplaces')
-            })
-            .catch(err => next(err))
-    }
+    // if (req.session.currentUser) {
+    //     if (cityName != cityName)
+    //         res.render('index', { errorMessage: 'This city is already your favorite' })
+    //     console.log('ENTRA EN ESTE')
+    //     return
+    // } else {
+    User
+        .findByIdAndUpdate(id, { $push: { cities: cityName } }, { new: true })
+        .then(updatedUser => {
+            req.session.currentUser = updatedUser
+            res.redirect('/myplaces')
+        })
+        .catch(err => next(err))
+    // }
 })
 
 
