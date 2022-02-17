@@ -2,9 +2,9 @@
 
     <div class="row justify-content-center">
 
-        <div class="col-md-6">
+        <div class="col-6">
 
-            <h1>Sign-up</h1>
+            <h1>Sign up</h1>
             <hr>
 
             <form action="/sign-up" method="POST">
@@ -23,11 +23,14 @@
                     <input type="password" class="form-control" id="pwdInput" name="userPwd">
                 </div>
 
-                <div class="d-grid gap-2">
+                <div class="d-grid gap-2 mb-3">
                     <button type="submit" class="btn btn-dark block">Sign-up</button>
                 </div>
-
             </form>
+            <div class="row justify-content-center">
+                <p class="btn">Already a user?</p>
+                <a class="btn" href="/login">Log in</a>
+            </div>
         </div>
     </div>
 

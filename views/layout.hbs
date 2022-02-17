@@ -18,25 +18,21 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <img class="user-icon" src="./../images/user-icon.png" alt="user">
          </button>
-         <div class="collapse navbar-collapse " id="navbarSupportedContent">
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                <li class="nav-item">
                   <a class="dropdown-item" href="/sign-up">Sign up</a>
                </li>
-               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                     data-bs-toggle="dropdown" aria-expanded="false">
-                     For users
-                     <hr class="dropdown-divider">
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                     <li><a class="dropdown-item" href="/login">login</a></li>
-                     <li>
-                     </li>
-                     <form action="/logout" method="POST">
-                        <a href="/" class="dropdown-item">logout</a>
-                     </form>
-                  </ul>
+               <li class="nav-item">
+                  <a class="dropdown-item" href="/login">Log in</a>
+               </li>
+               <li class="nav-item">
+                  <a class="dropdown-item" href="/myplaces">Fav places</a>
+               </li>
+               <li class="nav-item">
+                  <form action="/logout" method="POST">
+                     <a href="/" class="dropdown-item">logout</a>
+                  </form>
                </li>
             </ul>
          </div>

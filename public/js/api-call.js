@@ -64,14 +64,14 @@ form.addEventListener("submit", e => {
             li.classList.add("city")
             const markup = `
                 <div class= "row card align-items-center justify-content-around" style="border-radius: 5px">
-                    <div class="col-3">
+                    <div class="col-3 text-center">
                         <h2 class="city-name" data-name="${name}, ${sys.country}">
                         <span>${name}</span>
                         <sup>${sys.country}</sup>
                         </h2>
                         <span class="city-temp">${Math.round(main.temp)}<sup>°C</sup></span>
                     </div>
-                    <div class="col-3 align-items-center">
+                    <div class="col-3 text-center">
                         <figure>
                         <img class="city-icon" src="${icon}" alt="${weather[0]["description"]}">
                         <figcaption>${weather[0]["description"]}</figcaption>
@@ -112,19 +112,19 @@ form.addEventListener("submit", e => {
 
                     <div class= "row card align-items-center" style="border-radius: 5px">
 
-                        <div class="col-4 mb-3 ">
+                        <div class="col-4 mb-3 text-center">
                             <img class="city-icon" src="${icon1}" alt="">
                             <p class="city-temp">${Math.round(eachday[8].main.temp)}<sup>°C</sup></p>
                             <p class="city-feels">Feels like: ${Math.round(eachday[8].main.feels_like)}<sup>°C</sup></p>
                         </div>
 
-                        <div class="col-4 mb-3 ">
+                        <div class="col-4 mb-3 text-center ">
                             <img class="city-icon" src="${icon2}" alt="">
                             <p class="city-temp">${Math.round(eachday[16].main.temp)}<sup>°C</sup></p>
                             <p class="city-feels">Feels like: ${Math.round(eachday[16].main.feels_like)}<sup>°C</sup></p>
                         </div>
 
-                        <div class="col-4 mb-3">
+                        <div class="col-4 mb-3 text-center">
                             <img class="city-icon" src="${icon3}" alt="">
                             <p class="city-temp">${Math.round(eachday[24].main.temp)}<sup>°C</sup></p>
                             <p class="city-feels">Feels like: ${Math.round(eachday[24].main.feels_like)}<sup>°C</sup></p>
