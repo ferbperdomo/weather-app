@@ -71,15 +71,15 @@ form.addEventListener("submit", e => {
             const li = document.createElement("li")
             li.classList.add("city")
             const markup = `
-                <div class= "row card align-items-center justify-content-around" id="city" style="border-radius: 5px">
-                    <div class="col-3 text-center">
+                <div class= "row card align-items-center justify-content-around" style="border-radius: 5px">
+                    <div class="col-4 text-center">
                         <h2 class="city-name" data-name="${name}, ${sys.country}">
                         <span>${name}</span>
                         <sup>${sys.country}</sup>
                         </h2>
                         <span class="city-temp">${Math.round(main.temp)}<sup>°C</sup></span>
                     </div>
-                    <div class="col-3 text-center">
+                    <div class="col-4 text-center">
                         <figure>
                         <img class="city-icon" src="${icon}" alt="${weather[0]["description"]}">
                         <figcaption>${weather[0]["description"]}</figcaption>
@@ -90,7 +90,6 @@ form.addEventListener("submit", e => {
                             <button class="btn btn-sm mb-3 city-feels">Add to favs</button>
                         </div>
                     </form>
-
                 </div>
                 
                 `
