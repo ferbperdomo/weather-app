@@ -8,7 +8,7 @@
 }
 
 h2 {
-  font-size: .9em;
+  font-size: 1.3em;
 }
 
 main {
@@ -23,22 +23,31 @@ main {
   box-shadow: 2px 2px 10px 0 rgb(243, 209, 171)
 }
 
+.eachView{
+  font-size: 100%;
+}
+
+.myPlaces{
+  font-size: 110%;
+}
+
 .user-icon{
   width: 30px;
 }
+
 .city-icon{
   margin: 0px;
   padding: 0px;
-  width: 100%;
+  width: 85%;
 }
+
 .button-form{
   border: 0;
   background-color: transparent;
-  margin-top: 4px;
 }
 .description{
   padding-top: 20px;
-  font-size: .8em;
+  font-size: .7em;
 }
 
 .container {
@@ -80,13 +89,20 @@ main {
 .overlay-title{
   border-radius: 1px solid black;
 }
+#myMap:hover{
+  transform: scale(1.005);
+
+}
 
 .names{
   font-size: .8em;
 }
+.city-temp {
+  font-size: .9em;
+}
 
-.city-feels{
-  font-size: .7em;
+.city-feels, .city-date, .city-temp{
+  font-size: .9em;
 }
 
 .search{
@@ -126,17 +142,46 @@ footer a {
   .city-icon{
     width: 70%;
   }
-  
+  .city-feels, .city-date, .city-temp, .figcaption{
+    font-size: 1.2em;
+  }
+  .eachView{
+    font-size: 120%;
+  }
+  .myPlaces{
+    font-size: 130%;
+  }
 }
 
 
 @media (min-width: 992px){
+  h2{
+    font-size: 1.5em;
+  }
   .city-icon{
     width: 60%;
   }
-  .navbar-expand-lg .navbar-collapse {
-    display: flex!important;
-    flex-basis: auto;
+  
+  .city-feels, .city-date, .city-temp, .figcaption{
+    font-size: 1.1em;
+  }
+  .eachView{
+    font-size: 130%;
+  }
+  .myPlaces{
+    font-size: 160%;
+  }
+}
+
+@media (min-width: 1200px) { 
+  h2{
+    font-size: 2em;
+  }
+  .city-icon{
+    width: 40%;
+  }
+  .city-feels, .city-date, .city-temp, .figcaption{
+  font-size: 1.3em;
 }
 }
 
