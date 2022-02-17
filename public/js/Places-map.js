@@ -7,7 +7,7 @@ function initMap() {
         {
             zoom: 14,
             center: { lat: coord.lat, lng: coord.lon },
-            styles: mapStyles.aubergine
+            styles: mapStyles.silver
 
         }
     )

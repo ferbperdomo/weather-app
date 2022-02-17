@@ -8,7 +8,7 @@ const app = express()
 
 require("./config")(app)
 
-app.locals.siteTitle = `Weather-app`
+app.locals.siteTitle = `CloudyNight`
 app.locals.mapsApiKey = process.env.MAPS_API_KEY
 
 require("./config/session.config")(app)

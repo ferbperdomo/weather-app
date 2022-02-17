@@ -63,13 +63,13 @@ form.addEventListener("submit", e => {
             const li = document.createElement("li")
             li.classList.add("city")
             const markup = `
-                <div class= "row card align-items-center justify-content-around" style="border-radius: 25px">
+                <div class= "row card align-items-center justify-content-around" style="border-radius: 5px">
                     <div class="col-3">
                         <h2 class="city-name" data-name="${name}, ${sys.country}">
                         <span>${name}</span>
                         <sup>${sys.country}</sup>
                         </h2>
-                        <div class="city-temp">${Math.round(main.temp)}<sup>°C</sup></div>
+                        <span class="city-temp">${Math.round(main.temp)}<sup>°C</sup></span>
                     </div>
                     <div class="col-3 align-items-center">
                         <figure>
@@ -78,8 +78,8 @@ form.addEventListener("submit", e => {
                         </figure>
                     </div>
                     <form action="/myplaces/${cityName}" method="post">
-                        <div class="d-grid d-flex justify-content-end">
-                            <button class="btn btn-sm mb-3">Add to favs</button>
+                        <div class="d-grid d-flex justify-content-center">
+                            <button class="btn btn-sm mb-3 city-feels">Add to favs</button>
                         </div>
                     </form>
 
@@ -99,8 +99,7 @@ form.addEventListener("submit", e => {
                 .then(response => {
                     const { main, weather, dt_txt, wind } = response.data.list
                     const weatherList = response.data.list
-                    console.log('weatherlisssssstttt', weatherList)
-
+                    console.log(weatherList)
                     const li = document.createElement("li")
                     li.classList.add("forecast")
 
@@ -111,24 +110,24 @@ form.addEventListener("submit", e => {
 
                     const forecastText = `
 
-                    <div class= "row card align-items-center justify-content-start" style="border-radius: 25px">
+                    <div class= "row card align-items-center" style="border-radius: 5px">
 
-                        <div class="col-4 align-items-center mb-3">
+                        <div class="col-4 mb-3 ">
                             <img class="city-icon" src="${icon1}" alt="">
-                            <div class="city-temp">Temp:${Math.round(eachday[8].main.temp)}<sup>°C</sup></div>
-                            <div class="city-temp">S:${Math.round(eachday[8].main.feels_like)}<sup>°C</sup></div>
+                            <p class="city-temp">${Math.round(eachday[8].main.temp)}<sup>°C</sup></p>
+                            <p class="city-feels">Feels like: ${Math.round(eachday[8].main.feels_like)}<sup>°C</sup></p>
                         </div>
 
-                        <div class="col-4 align-items-center mb-3">
+                        <div class="col-4 mb-3 ">
                             <img class="city-icon" src="${icon2}" alt="">
-                            <div class="city-temp">T:${Math.round(eachday[16].main.temp)}<sup>°C</sup></div>
-                            <div class="city-temp">S:${Math.round(eachday[16].main.feels_like)}<sup>°C</sup></div>
+                            <p class="city-temp">${Math.round(eachday[16].main.temp)}<sup>°C</sup></p>
+                            <p class="city-feels">Feels like: ${Math.round(eachday[16].main.feels_like)}<sup>°C</sup></p>
                         </div>
 
-                        <div class="col-4 align-items-center mb-3">
+                        <div class="col-4 mb-3">
                             <img class="city-icon" src="${icon3}" alt="">
-                            <div class="city-temp">T:${Math.round(eachday[24].main.temp)}<sup>°C</sup></div>
-                            <div class="city-temp">S:${Math.round(eachday[24].main.feels_like)}<sup>°C</sup></div>
+                            <p class="city-temp">${Math.round(eachday[24].main.temp)}<sup>°C</sup></p>
+                            <p class="city-feels">Feels like: ${Math.round(eachday[24].main.feels_like)}<sup>°C</sup></p>
                         </div>
 
                     </div>

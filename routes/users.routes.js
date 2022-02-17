@@ -27,7 +27,6 @@ router.get('/myplaces', isLoggedIn, (req, res, next) => {
 router.post('/myplaces/:cityName', (req, res, next) => {
     const { cityName } = req.params
     const id = req.session.currentUser._id
-    console.log('ESTE ES EL ID', req.session.currentUser._id)
     // if (req.session.currentUser) {
     //     if (cityName != cityName)
     //         res.render('index', { errorMessage: 'This city is already your favorite' })
