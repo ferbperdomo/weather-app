@@ -2,6 +2,7 @@ const router = require('express').Router()
 const { response } = require('express')
 const { isLoggedIn } = require('../middlewares/route-guard')
 const User = require("../models/User.model")
+var d2d = require('degrees-to-direction')
 
 const weatherHandler = require('./../services/weather-handler')
 
@@ -54,8 +55,6 @@ router.get('/eachplace/:cityName', (req, res, next) => {
         .getForecast(cityName)
 
         .then((response) => {
-            //console.log(response.data.list)
-            //res.render('users/eachplace', response.data.list)
 
             const weatherIntervals = response.data.list.map(interval => {
                 const formattedDate = `${interval.dt_txt.substring(8, 10)}-${interval.dt_txt.substring(5, 7)}`
@@ -63,24 +62,26 @@ router.get('/eachplace/:cityName', (req, res, next) => {
                 const formattedMaxTemp = Math.round(interval.main.temp_max)
                 const formattedMinTemp = Math.round(interval.main.temp_min)
 
+
+
                 return {
-                    // name: cityName,
                     main: interval.main,
                     temp: formattedTemp,
                     maxTemp: formattedMaxTemp,
                     minTemp: formattedMinTemp,
-                    weather: interval.weather[0].description,
+                    description: interval.weather[0].description,
                     wind: interval.wind,
-                    date: formattedDate
+                    date: formattedDate,
 
+                    iconUrl: `https://openweathermap.org/img/wn/${interval.weather[0].icon}@2x.png`,
+                    iconUrl8: `https://openweathermap.org/img/wn/${interval.weather[0].icon}@2x.png`,
+                    iconUrl16: `https://openweathermap.org/img/wn/${interval.weather[0].icon}@2x.png`,
+                    iconUrl24: `https://openweathermap.org/img/wn/${interval.weather[0].icon}@2x.png`,
+                    iconUrl32: `https://openweathermap.org/img/wn/${interval.weather[0].icon}@2x.png`,
                 }
             })
-            res.render('users/eachplace', weatherIntervals)
-            // console.log("MAIN ->", main)
-            // console.log("temp ->", temp)
-            console.log(weatherIntervals)
-            console.log(weatherIntervals[0].weather[0].description)
-
+            res.render('users/eachplace', { weatherIntervals, cityName })
+            console.log(weatherIntervals[0].wind)
 
         })
 

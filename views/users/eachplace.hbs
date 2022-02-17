@@ -3,27 +3,31 @@
         <div class="col-12">
 
             <div class="container">
-                <div class="row card align-items-center justify-content-around" style="border-radius: 25px">
+                <div class="row card align-items-center justify-content-around">
                     <div class="col-6">
-                        <h2>Nombre de la ciudad</h2>
-
-                        {{[0].temp}}
+                        <h1>{{cityName}}</h1>
+                        {{weatherIntervals.[0].date}}
                         <br>
-                        {{[0].weather}}
+                        {{weatherIntervals.[0].temp}}<sup>°</sup>
+
 
                     </div>
                     <div class="col-6">
-                        <h2>Icono va aquí</h2>
+                        <img src={{weatherIntervals.[0].iconUrl}} alt="Icon showing todays weather">
+                        <br>
+                        {{weatherIntervals.[0].description}}
                     </div>
                 </div>
             </div>
 
             <div class="container">
-                <div class="row card align-items-center justify-content-around" style="border-radius: 25px">
+                <div class="row card align-items-center justify-content-around">
                     <div class="col">
-                        max:{{[0].maxTemp}} <sup>°C</sup>/ min: {{[0].main.temp_min}}<sup>°C</sup> |
-                        pressure: {{[0].main.pressure}} |
-                        humidity: {{[0].main.humidity}}
+                        max:{{weatherIntervals.[0].maxTemp}} <sup>°</sup>/ min:
+                        {{weatherIntervals.[0].main.temp_min}}<sup>°</sup> |
+                        pressure: {{weatherIntervals.[0].main.pressure}} |
+                        humidity: {{weatherIntervals.[0].main.humidity}} |
+                        wind: {{weatherIntervals.[0].wind.deg}}
 
 
                     </div>
@@ -33,27 +37,42 @@
             </div>
 
             <div class="container">
-                <div class="row card align-items-center justify-content-around" style="border-radius: 25px">
+                <div class="row card align-items-center justify-content-around">
                     <div class="col-3">
-                        {{[8].date}}
-                        Max:{{[8].maxTemp}}
-                        Min:{{[8].minTemp}}
+                        {{weatherIntervals.[8].date}}
+                        <img src={{weatherIntervals.[8].iconUrl8}} alt="icon showing weather 24 from now">
+                        {{weatherIntervals.[8].description}}
+                        <br>
+                        {{weatherIntervals.[8].maxTemp}}
+                        {{weatherIntervals.[8].minTemp}}
 
                     </div>
                     <div class="col-3">
-                        {{[16].date}}
-                        Max{{[16].maxTemp}}
-                        Min{{[16].minTemp}}
+                        {{weatherIntervals.[16].date}}
+                        <img src={{weatherIntervals.[16].iconUrl16}} alt="icon showing weather 48 from now">
+                        <br>
+                        {{weatherIntervals.[26].description}}
+                        <br>
+                        {{weatherIntervals.[16].maxTemp}}
+                        {{weatherIntervals.[16].minTemp}}
                     </div>
                     <div class="col-3">
-                        {{[24].date}}
-                        Max{{[24].maxTemp}}
-                        Min{{[24].minTemp}}
+                        {{weatherIntervals.[24].date}}
+                        <img src={{weatherIntervals.[24].iconUrl24}} alt="icon showing weather 72 from now">
+                        <br>
+                        {{weatherIntervals.[24].description}}
+                        <br>
+                        {{weatherIntervals.[24].maxTemp}}
+                        {{weatherIntervals.[24].minTemp}}
                     </div>
                     <div class="col-3">
-                        {{[32].date}}
-                        Max{{[32].maxTemp}}
-                        Min{{[32].minTemp}}
+                        {{weatherIntervals.[32].date}}
+                        <img src={{weatherIntervals.[32].iconUrl32}} alt="icon showing weather 96 from now">
+                        <br>
+                        {{weatherIntervals.[32].description}}
+                        <br>
+                        {{weatherIntervals.[32].maxTemp}}
+                        {{weatherIntervals.[32].minTemp}}
                     </div>
                 </div>
             </div>
