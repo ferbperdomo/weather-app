@@ -5,7 +5,7 @@ const User = require("../models/User.model")
 
 const weatherHandler = require('./../services/weather-handler')
 
-
+//Favorite places for each user
 router.get('/myplaces', isLoggedIn, (req, res, next) => {
     const { cities } = req.session.currentUser
     const weatherApi = new weatherHandler()
@@ -32,6 +32,7 @@ router.get('/myplaces', isLoggedIn, (req, res, next) => {
 
 })
 
+//Add favorite place 
 router.post('/myplaces/:cityName', (req, res, next) => {
     const { cityName } = req.params
     if (req.session.currentUser) {
@@ -52,7 +53,7 @@ router.post('/myplaces/:cityName', (req, res, next) => {
     res.render('index', { msg: 'You got to be user 😉' })
 })
 
-
+//Forecast for each place
 router.get('/eachplace/:cityName', (req, res, next) => {
 
     const { cityName } = req.params
@@ -90,10 +91,6 @@ router.get('/eachplace/:cityName', (req, res, next) => {
 
         })
         .catch(err => next(err))
-})
-
-router.get('/suggestions', (req, res, next) => {
-    res.render('users/suggestions')
 })
 
 module.exports = router 
