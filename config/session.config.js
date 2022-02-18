@@ -3,7 +3,7 @@ const MongoStore = require('connect-mongo')
 const mongoose = require('mongoose')
 
 module.exports = app => {
-    app.set('trust proxy', 1);
+    app.set('trust proxy', 1)
 
     app.use(
         session({
@@ -17,8 +17,8 @@ module.exports = app => {
                 maxAge: 600000
             },
             store: MongoStore.create({
-                mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/basic-auth'
+                mongoUrl: process.env.MONGODB_REMOTE || process.env.MONGODB_URI || 'mongodb://localhost/basic-auth'
             })
         })
-    );
-};
+    )
+}
