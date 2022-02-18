@@ -26,6 +26,8 @@ router.get("/login", isLoggedOut, (req, res, next) => res.render('auth/login-for
 
 router.post("/login", (req, res, next) => {
 
+    console.log('hello loginnnnnnnn')
+
     const { email, userPwd } = req.body
 
     if (email.length === 0 || userPwd.length === 0) {
