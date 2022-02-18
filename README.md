@@ -1,22 +1,15 @@
-# Main title weather-app
-Created by Cristian Perdomo and Miguel Ortega
+# CloudyNight
+
+Here you are allowed to travel around the world asking for the weather of your desired city.
+Additionally, you will have the forecast for three days in a row.
+You will have access to each city specific details.
 
 
-
-
+Designed by Cristian Perdomo and Miguel Ortega
 
 # Api
-
-[Openweathermap](https://openweathermap.org/current)
-
-````html
-<script src=""></script>
-````
-
-here goes information about the api
----
-
-
+The api chose to develop the current app was [Openweathermap](https://openweathermap.org/current)
+For next steps, we will include further information and different maps.
 
 ## Endpoint table
 
@@ -27,6 +20,4 @@ here goes information about the api
 | GET         	| `/login` 	| Log in	| |
 | GET         	| `/myplaces` 	| Places added to favourites 	| X |
 | GET         	| `/eachplace/{{cityName}}` 	| Each place with further information 	| X |
-| POST         	| `/account/suggestions` 	| Form for feedback 	| X |
-| POST         	| `/account/messages` 	| Answers for feedback 	| X |
 
