@@ -17,7 +17,8 @@ class ApiHandler {
 
     getAllCitiesInfo(cities) {
         const promises = cities.map(cityname => this.axiosApp.get(`weather?q=${cityname}&appid=9bd64e664d7d9b7b25e4a3a0eda152a9&units=metric`))
-        return Promise.all(promises)
+
+        return Promise.all(promises).catch(err => console.log(err))
     }
 
 }

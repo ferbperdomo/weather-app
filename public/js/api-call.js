@@ -105,7 +105,6 @@ form.addEventListener("submit", e => {
                 .then(response => {
                     const { main, weather, dt_txt, wind } = response.data.list
                     const weatherList = response.data.list
-                    console.log(weatherList)
                     const li = document.createElement("li")
                     li.classList.add("forecast")
 

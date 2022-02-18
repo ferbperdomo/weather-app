@@ -13,9 +13,9 @@ router.get('/myplaces', isLoggedIn, (req, res, next) => {
     weatherApi
         .getAllCitiesInfo(cities)
         .then(response => {
+            console.log(response)
             const citiesData = response.map(eachCityInfo => {
                 const formattedTemp = Math.round(eachCityInfo.data.main.temp)
-
                 return {
                     name: eachCityInfo.data.name,
                     main: eachCityInfo.main,
@@ -33,14 +33,18 @@ router.get('/myplaces', isLoggedIn, (req, res, next) => {
 })
 
 router.post('/myplaces/:cityName', (req, res, next) => {
-    const { cityName } = req.params
+    let { cityName } = req.params
+    //ELIMINA LAS TILDES DEL NOMBRE DE LA CIUDAD
+    cityName = cityName.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+
     if (req.session.currentUser) {
         const id = req.session.currentUser._id
         if (req.session.currentUser.cities.includes(cityName)) {
             res.render('index', { msg: 'This city is already your favorite 😉' })
             return
         } else {
-            User
+            //INCLUIDO UN RETURN PARA DETENER EL CODIGO Y EVITAR DOS RESPUESTAS A UN SOLO REQUEST
+            return User
                 .findByIdAndUpdate(id, { $push: { cities: cityName } }, { new: true })
                 .then(updatedUser => {
                     req.session.currentUser = updatedUser
