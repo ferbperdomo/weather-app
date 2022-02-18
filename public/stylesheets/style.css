@@ -81,14 +81,39 @@ main {
   transform: scale(1.005);
 }
 
-.home-video {
-  width: 100%;
-  height: 400px;
+.home-title h1{
+  font-size: 8em;
+  font-weight: 800;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.overlay-title{
-  border-radius: 1px solid black;
+.home-gif {
+  width: 50%;
+  height: 70%;
 }
+
+.overlay-title {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid black; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+    
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black; }
+}
+
 #myMap:hover{
   transform: scale(1.005);
 
@@ -213,5 +238,6 @@ footer a {
     transform: translateY(20px);
   }
 }
+
  
 
