@@ -82,7 +82,7 @@ main {
 }
 
 .home-title h1{
-  font-size: 8em;
+  font-size: 6.5em;
   font-weight: 800;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -95,8 +95,9 @@ main {
 .overlay-title {
   overflow: hidden; 
   border-right: .15em solid black; 
-  white-space: nowrap; 
+  white-space:nowrap; 
   margin: 0 auto; 
+  font-size: 1.1em;
   letter-spacing: .15em; 
   animation: 
   typing 3.5s steps(40, end),
@@ -176,6 +177,9 @@ footer a {
   .myPlaces{
     font-size: 130%;
   }
+  .overlay-title {
+    font-size: 1.4em;
+  }
 }
 
 @media (min-width: 992px){
@@ -195,6 +199,9 @@ footer a {
   .myPlaces{
     font-size: 160%;
   }
+  .overlay-title {
+    font-size: 1.6em;
+  }
 }
 
 @media (min-width: 1200px) { 
@@ -206,7 +213,10 @@ footer a {
   }
   .city-feels, .city-date, .city-temp, .figcaption{
   font-size: 1.3em;
-}
+  }
+  .overlay-title {
+    font-size: 2em;
+  }
 }
  
 
