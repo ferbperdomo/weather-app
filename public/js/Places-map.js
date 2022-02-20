@@ -11,21 +11,6 @@ function initMap() {
 
         }
     )
-    getCoords()
 }
 
-function getCoords() {
-
-    navigator.geolocation.getCurrentPosition(
-        geolocationDetails => centerMap(geolocationDetails),
-        errorDetails => console.log('error --->', errorDetails)
-    )
-}
-
-function centerMap() {
-
-    const { Marker } = google.maps
-
-    new Marker({ map, coord })
-}
 
