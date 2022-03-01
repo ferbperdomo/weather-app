@@ -139,7 +139,12 @@ main {
 .dropdown-item{
   text-align: right;
 }
-
+.forecast-details img{
+  width: 70%;
+}
+.forecast-details {
+  font-size: .8em;
+}
 footer {
   text-align: center;
   font-size: .5em;
