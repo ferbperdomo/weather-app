@@ -84,14 +84,17 @@ main {
 }
 
 .home-title h1{
-  font-size: 6em;
+  font-size: 4em;
   font-weight: 800;
+  padding-bottom: 30px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .home-gif {
-  width: 50%;
-  height: 70%;
+  width: 40%;
+  height: 60%;
+  padding-bottom: 70px;
+
 }
 
 .overlay-title {
