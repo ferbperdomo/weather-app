@@ -82,7 +82,7 @@ main {
 }
 
 .home-title h1{
-  font-size: 6.5em;
+  font-size: 6em;
   font-weight: 800;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -97,7 +97,7 @@ main {
   border-right: .15em solid black; 
   white-space:nowrap; 
   margin: 0 auto; 
-  font-size: 1.1em;
+  font-size: 1em;
   letter-spacing: .15em; 
   animation: 
   typing 3.5s steps(40, end),
