@@ -187,6 +187,12 @@ footer a {
   .overlay-title {
     font-size: 1.4em;
   }
+  footer {
+  font-size: .7em;
+  }
+  .city-name{
+  font-size: 1.3em;
+  }
 }
 
 @media (min-width: 992px){
@@ -209,6 +215,12 @@ footer a {
   .overlay-title {
     font-size: 1.6em;
   }
+  footer {
+  font-size: .9em;
+  }
+  .city-name{
+  font-size: 1.5em;
+  }
 }
 
 @media (min-width: 1200px) { 
@@ -223,6 +235,12 @@ footer a {
   }
   .overlay-title {
     font-size: 2em;
+  }
+  footer {
+  font-size: 1.1em;
+  }
+  .city-name{
+  font-size: 1.7em;
   }
 }
  
