@@ -5,7 +5,6 @@ const User = require("../models/User.model")
 
 const weatherHandler = require('./../services/weather-handler')
 
-//Favorite places for each user
 router.get('/myplaces', isLoggedIn, (req, res, next) => {
     const { cities } = req.session.currentUser
     const weatherApi = new weatherHandler()
@@ -13,7 +12,6 @@ router.get('/myplaces', isLoggedIn, (req, res, next) => {
     weatherApi
         .getAllCitiesInfo(cities)
         .then(response => {
-            console.log(response)
             const citiesData = response.map(eachCityInfo => {
                 const formattedTemp = Math.round(eachCityInfo.data.main.temp)
                 return {
@@ -22,7 +20,6 @@ router.get('/myplaces', isLoggedIn, (req, res, next) => {
                     temp: formattedTemp,
                     description: eachCityInfo.data.weather[0].description,
                     iconUrl: `https://openweathermap.org/img/wn/${eachCityInfo.data.weather[0].icon}@2x.png`,
-
                 }
             })
 
@@ -32,10 +29,8 @@ router.get('/myplaces', isLoggedIn, (req, res, next) => {
 
 })
 
-//Add favorite place 
 router.post('/myplaces/:cityName', (req, res, next) => {
     let { cityName } = req.params
-    //ELIMINA LAS TILDES DEL NOMBRE DE LA CIUDAD
     cityName = cityName.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 
     if (req.session.currentUser) {
@@ -44,7 +39,6 @@ router.post('/myplaces/:cityName', (req, res, next) => {
             res.render('index', { msg: 'This city is already your favorite 😉' })
             return
         } else {
-            //INCLUIDO UN RETURN PARA DETENER EL CODIGO Y EVITAR DOS RESPUESTAS A UN SOLO REQUEST
             return User
                 .findByIdAndUpdate(id, { $push: { cities: cityName } }, { new: true })
                 .then(updatedUser => {
@@ -57,12 +51,10 @@ router.post('/myplaces/:cityName', (req, res, next) => {
     res.render('index', { msg: 'You got to be user 😉' })
 })
 
-//Forecast for each place
 router.get('/eachplace/:cityName', (req, res, next) => {
 
     const { cityName } = req.params
     const weatherApi = new weatherHandler()
-
 
     weatherApi
         .getForecast(cityName)

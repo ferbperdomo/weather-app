@@ -87,14 +87,13 @@ main {
   font-size: 4em;
   font-weight: 800;
   padding-bottom: 30px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', Verdana, sans-serif;
 }
 
 .home-gif {
   width: 40%;
   height: 60%;
   padding-bottom: 50px;
-
 }
 
 .overlay-title {
@@ -205,6 +204,10 @@ footer a {
   .city-icon{
     width: 60%;
   }
+  .home-title h1{
+  font-size: 7em;
+  margin-top: 10%;
+  }
   
   .city-feels, .city-date, .city-temp, .figcaption{
     font-size: 1.1em;
@@ -230,15 +233,21 @@ footer a {
   h2{
     font-size: 2em;
   }
+
+  .home-title h1{
+  font-size: 7em;
+  margin-top: 10%;
+  }
+  .home-gif {
+  width: 50%;
+  }
   .city-icon{
     width: 40%;
   }
   .city-feels, .city-date, .city-temp, .figcaption{
   font-size: 1.3em;
   }
-  .overlay-title {
-    font-size: 2em;
-  }
+ 
   footer {
   font-size: 1.1em;
   }

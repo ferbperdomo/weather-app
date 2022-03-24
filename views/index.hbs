@@ -1,54 +1,49 @@
 <div class="container">
 
+    <div class="row justify-content-center mt-5">
 
-    <div class="container">
-
-        <div class="row justify-content-center">
-
-            <div class="col-9 search">
-                <section class="top-banner">
-                    <form class="d-flex mb-5">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-dark" type="submit">Search</button>
-                    </form>
-                    <div class="msg">{{msg}}</div>
-                </section>
-            </div>
+        <div class="col-9 search">
+            <section class="top-banner">
+                <form class="d-flex mb-5">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-dark" type="submit">Search</button>
+                </form>
+                <div class="msg">{{msg}}</div>
+            </section>
         </div>
 
-        <div class="show" id="overlay">
-            <div class="row">
-                <div class="col home-title text-center">
-                    <h1>Cloudy Night</h1>
-                </div>
+    </div>
+
+    <div class="show" id="overlay">
+
+        <div class="row">
+            <div class="col col-xl-6 home-title text-center">
+                <h1>Cloudy Night</h1>
             </div>
-            <div class="row">
 
-                <div class="col text-center">
-                    <img class="home-gif"
-                        src="https://media1.giphy.com/media/YU7JFa3TcjIM6b1JZo/giphy.gif?cid=ecf05e478qri0d1hpev3pypnuxielmd7905atauwkpdjzkr7&rid=giphy.gif&ct=g"
-                        alt="">
+            <div class="col col-xl-6 text-center">
+                <img class="home-gif"
+                    src="https://media1.giphy.com/media/YU7JFa3TcjIM6b1JZo/giphy.gif?cid=ecf05e478qri0d1hpev3pypnuxielmd7905atauwkpdjzkr7&rid=giphy.gif&ct=g"
+                    alt="">
 
-                    <h2 class="overlay-title">What's your fav city in the world?</h2>
-                </div>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-9">
-                <section class="card-section">
-                    <ul class="cities"></ul>
-
-                </section>
+                <h2 class="overlay-title">What's your fav city in the world?</h2>
             </div>
         </div>
+    </div>
 
-        <div class="row justify-content-center mt-3">
-            <div class="col-9">
-                <section class="forecast-section">
-                    <ul class="forecasts"></ul>
-                </section>
-            </div>
+    <div class="row justify-content-center">
+        <div class="col-9">
+            <section class="card-section">
+                <ul class="cities"></ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-9">
+            <section class="forecast-section">
+                <ul class="forecasts"></ul>
+            </section>
         </div>
     </div>
 
