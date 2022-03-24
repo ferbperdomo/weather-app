@@ -16,8 +16,8 @@ For next steps, we will include further information and different maps.
 | HTTP Method 	| URI path      	| Description                                    	| Protected 	|
 |-------------	|---------------	|------------------------------------------------	|---------	|
 | GET         	| `/`             	| Index page          	| |
-| GET         	| `/sign-up` 	| Register users 	| |
-| GET         	| `/login` 	| Log in	| |
+| POST         	| `/sign-up` 	| Register users 	| |
+| POST         	| `/login` 	| Log in	| |
 | GET         	| `/myplaces` 	| Places added to favourites 	| X |
 | GET         	| `/eachplace/{{cityName}}` 	| Each place with further information 	| X |
 
